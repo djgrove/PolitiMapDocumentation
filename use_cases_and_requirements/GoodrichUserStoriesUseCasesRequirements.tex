@@ -1,0 +1,151 @@
+\documentclass[11pt,oneside,letterpaper]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\usepackage{longtable}
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+
+\newenvironment{packed_enumerate}{ %custom enumerate for single-spacing
+\vspace{-7mm}
+\begin{enumerate}
+  \setlength{\itemsep}{0pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{enumerate}
+\vspace{-8mm}}
+
+\begin{document}
+
+\title{\bfseries PolitiMap: \\User Stories, Use Cases, and Requirements\\
+Version 1.1}
+\author{Matthew Goodrich}
+
+
+\maketitle \thispagestyle{empty}
+
+\pagebreak
+\tableofcontents
+\pagebreak
+
+\newpage
+
+\section{User Stories}
+\subsection{Informing New Voters}
+As a new voter, I want to be able to view previously-passed bills, so I can understand how politics have evolved and develop context for future bills.
+
+\subsection{Customer Value}
+As a busy voter, I want to be able to quickly view the status of new bills, so I can stay updated with politics, without investing too much of my valuable time.
+
+\subsection{The Bigger Picture}
+As an out-of-state student, I am affected by politics in multiple areas, meaning I want to be able to browse only federal bills and representatives, so I can invest my time well and only view relevant information.
+
+\section{Unique Use Case}
+\subsection{\label{Sim Data}Viewing Federal Bills}
+\begin{longtable}{|r|p{3.8in}|}
+\hline
+Use Case ID:&1\\
+\hline
+Use Case Name:&View Federal Bills\\
+\hline
+Created By:&Matthew Goodrich\\
+\hline
+Last Updated By:&Matthew Goodrich\\
+\hline
+Date Created:&October 6, 2016\\
+\hline
+Date Last Updated:&October 6, 2016\\
+\hline
+Actors:&The Application User; The Swift iOS Application; The Backend Server\\
+\hline
+Description:&The application shall display a list of federal bills and further information about each upon selection.\\
+\hline
+Preconditions:&
+\begin{packed_enumerate}
+\item The device is connected to the internet.
+\item The backend is loaded with the organized data.
+\item The device has the application downloaded, updated, and open to the home screen.
+\item The backend server is running, whether it be an AWS component or EC2 instance.
+\end{packed_enumerate}\\
+\hline
+Postconditions:&
+\begin{packed_enumerate}
+\item A list of federal bills will be shown and likely scrolled-down, or the details of a specific bill will be showing.
+\item A request will have been made to the AWS component or EC2 instance.
+\item TBD - The federal bills may be cached in the user's device.
+\end{packed_enumerate}\\
+\hline
+Normal Flow:&
+\begin{packed_enumerate}
+\item The user chooses to view the list of bills relating to their local, state, and federal governments.
+\item A GET request is made to the web server while the user sees a loading animation.
+\item The user selects to filter the list of bills to show only federal bills.
+\item The user scrolls through the bills and notices an interesting one.
+\item The interesting bill is selected and the user reads related information, including a summary, associated representatives, and links to related external documentation.
+\end{packed_enumerate}\\
+\hline
+Alternative Flows:&
+\begin{packed_enumerate}
+\item The user selects a federal bills list instead of filtering a combined list.
+\item The bills are loaded upon opening the application and only refreshed manually.
+\item The bill information does not include associated representatives.
+\item The bill shows dynamic data, such as votes and comments.
+\end{packed_enumerate}\\
+\hline
+Exceptions:&
+\begin{packed_enumerate}
+\item Unable to load the bills through the lack of an internet connection.
+\end{packed_enumerate}\\
+\hline
+Includes:&
+\begin{packed_enumerate}
+\item An external library to make the GET request.
+\end{packed_enumerate}\\
+\hline
+Priority:&High - One of the core functions of the application.\\
+\hline
+Frequency of Use:&Depends on the number of users and other variables.\\
+\hline
+Business Rules:&None\\
+\hline
+Special Requirements:&
+\begin{packed_enumerate}
+\item The application requests the data asynchronously.
+\item The device is an iPhone 5 or newer.
+\item Specific bill information is loaded with a GET request after a bill is selected.
+\end{packed_enumerate}\\
+\hline
+Assumptions::&
+\begin{packed_enumerate}
+\item Viewable federal bills exist in the backend.
+\item Representatives have been linked to associated bills.
+\item Documentation links have been added to associated bills.
+\end{packed_enumerate}\\
+\hline
+Notes and Issues:&None\\
+\hline
+\end{longtable}
+
+\section{Functional Requirements}
+\subsection{Frequent Request Cost}
+The system shall store the frequently accessed data, such as the list of federal bills, in AWS S3, to minimize the cost to \$.004 per 10,000 requests.
+
+\subsection{Network Refresh}
+The system shall refresh the list of federal bills from GET requests through a network connection.
+
+\subsection{Default Bill Sorting}
+The system shall default to sorting bills by the timestamp of their last update in content.
+
+\section{Non-Functional Requirements}
+\subsection{Quick Loading}
+The system shall load the list of bills in under two seconds.
+
+\subsection{Well-Developed iOS Application}
+The system shall have zero memory leaks.
+
+\subsection{Current Information}
+Federal bills shall be updated within one day of receiving new information.
+
+\end{document}

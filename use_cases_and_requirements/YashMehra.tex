@@ -1,0 +1,89 @@
+\documentclass{article}
+\usepackage{varioref}
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+\usepackage{tabu}
+\usepackage{booktabs}
+\newcommand{\story}[3]{\item As a #1, I want to be able to #2 so I can #3.}
+\newcommand{\requirement}[1]{The system shall #1.}
+
+\title{User Stories, Use Cases\\
+  {\large and}\\
+  Functional Requirements}
+\author{Yash Mehra}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\section{User Stories}
+\begin{enumerate}
+\story{frequent traveler}{fI want to be able to save multiple locations within
+the app}{easily access the information on where I travel the most}\label{agenda}
+\story{Cal Poly student}{access council meetings through the app}{keep up-to-date with local politics without missing any work}
+\story{local business owner}{alerted about anything on the agenda that might be related to me}{get notifications rather than checking for new information everyday}
+\end{enumerate}
+\section{Use Cases}
+\begin{tabu}{rX}
+  \toprule
+  Use Case ID: & 1\\
+  Use Case Name: & Save Locations\\
+  Created By: & Yash Mehra\\
+  Last Updated By: & Yash Mehra\\
+  Date Created: & 2016-10-06\\
+  Date Last Updated: & 2016-10-06\\
+  Actors: & The PolitiMap App\\
+  Description: & Save multiple locations on the home page of the Application\\
+  Preconditions: &
+  \begin{enumerate}
+  \item The location is currently supported by the app
+  \item The app is open
+  \item The app is on the home page
+  \end{enumerate} \\
+  Postconditions: &
+  \begin{enumerate}
+  \item The app shows the saved location on the home page.
+  \item The app should be able to access the location and show its Political information when tapped
+  \end{enumerate} \\
+  Normal Flow: &
+  \begin{enumerate}
+  \item The user opens app
+  \item The app loads locations saved by the user
+  \item The user views saved locations
+  \item (Alternative flow 1)
+  \item The user searches a new locations
+  \item The user chooses to save the location
+  \end{enumerate} \\
+  Alternative Flows: &
+  Alternative flow 1
+  \begin{enumerate}
+  \item Save location
+  \end{enumerate} \\
+  Priority: & High\\
+  Special Requirements: & \\
+  Assumptions: & All locations can be found\\
+  Notes and Issues: & Based on User Story \vref{agenda}\\
+  \bottomrule
+\end{tabu}
+\section{Functional Requirements}
+\begin{tabu}{lX}
+  \toprule
+  FR Requirement & Description\\
+  \midrule
+  FR-1 & \requirement{Alter order of saved addresses}\\
+  FR-2 & \requirement{Delete addresses the user doesnt want anymore}\\
+  FR-3 & \requirement{Edit saved addresses}\\
+  \bottomrule
+\end{tabu}
+\section{Non-Functional Requirements}
+\begin{tabu}{lX}
+  \toprule
+  NFR Requirement & Description\\
+  \midrule
+  NFR-1 & \requirement{Securely store the saved Addresses}\\
+  NFR-2 & \requirement{Memory should be avaliable to store the local addresses}\\
+  NFR-3 & \requirement{Home page should be loaded instantly with the static information}\\
+  \bottomrule
+\end{tabu}
+
+\footnote{Latex Format by Andrew Gilbert}
+\end{document}

@@ -1,0 +1,204 @@
+\documentclass{article}
+\usepackage{calc}
+
+\usepackage{tabu}
+\usepackage{booktabs}
+
+\usepackage{ragged2e}
+
+\usepackage{adjustbox}
+
+\usepackage{biblatex}
+\addbibresource{bibliography.bib}
+
+\title{Vision and Scope Document\\\large for\\\Large PolitiMap}
+\author{PolitiMap Team}
+\begin{document}
+\maketitle
+\tableofcontents
+\section{Revision History}
+\section{Business Requirements}
+Ultimate value of the product: Encourage political involvement in
+local government. This benefits the users by enabling them to better
+take advantage of the republic in which they live. This can also
+benefit activist groups by enabling them to get more eyes on the
+causes they care about.
+
+\subsection{Background}
+Voter turnout is a problem for the United States as a whole, with a
+study from Pew Research stating that the US ranks “31st among the 35
+countries in the Organization for Economic Cooperation and
+Development, most of whose members are highly developed, democratic
+states.”  \cite{pew} Voter turnout for local elections in large cities
+is even worse, with a 2014 study from Governing showing that turnout
+in Chicago, New York, Philadelphia, and LA ranged from 20\% to 42\% in
+the most recent election shown in the study. \cite{governing} Turnout
+in San Luis Obispo county for the most recent general election in 2014
+was 58.42\% of registered voters. \cite{slocounty}
+
+\subsection{Business Opportunity}
+Given that 62,434 registered voters did not vote in the most recent
+general election, there is an opportunity to significantly increase
+voter turnout in San Luis Obispo county. Further, judging from the low
+turnout for elections, it seems reasonable that people who do not vote
+likely are not following the progress of local bills. PolitiMap will
+seek to increase the awareness of local voters regarding local bills.
+
+\subsection{Business Objectives and Success Criteria}
+\begin{tabu}{lX}
+  \toprule
+  Business Objectives & Metric\\
+  \midrule
+  \textbf{BO-1} Have active users & \textbf{SC-1} 100 calls made by
+  voters to their representatives in local government.\\
+  \bottomrule
+\end{tabu}
+
+\subsection{Customer or Market Needs}
+TBD
+
+\subsection{Business Risks}
+\begin{tabu}{lXX}
+  \toprule
+  Risk Level & Description & Mitigation \\
+  \midrule
+  Occurred &
+  \textbf{RI-1} Competitor exists &
+  Gain clear
+  understanding of competitor's positioning and either provide a
+  better product or a different product\\
+
+  High &
+  \textbf{RI-2} Server hosting may become expensive after our
+  free year on AWS &
+  Make plans to shut down system after one year or to
+  have long-term funding \\
+
+  Low &
+  \textbf{RI-3} A server breakin may allow information to be
+  changed &
+  Proper server security \\
+  Low & \textbf{RI-4} A server breakin may allow misuse of the server
+& Proper server security \\
+  \bottomrule
+\end{tabu}
+
+\section{Vision of Solution}
+\subsection{Vision Statement}
+PolitiMap seeks to increase the involvement of ordinary citizens in
+local government.
+
+\subsection{Major Features}
+\begin{tabu}{lX}
+  \toprule
+  Feature & Description\\
+  \midrule
+  \textbf{FE-1} & Display of local, state, and federal bills\\
+  \textbf{FE-2} & Easy way to call representative\\
+  \bottomrule
+\end{tabu}
+
+\subsection{Assumptions and Dependencies}
+\begin{tabu}{lX}
+  \toprule
+  Assumption    & Description \\
+  \midrule
+  \textbf{AS-1} & More involvement with local politics is beneficial \\
+
+  \textbf{AS-2} & Voters lack information in order to be more involved
+  with local politics \\
+  \textbf{AS-3} & Voter involvement with local politics is
+  limited\footnote{This seems likely to be true, given voter turnout
+    numbers, but may not be.} \\
+  \bottomrule
+\end{tabu}
+\vspace{.3in}
+\noindent\begin{tabu}{lX}
+  \toprule
+  Dependency    & Description \\
+  \midrule
+  \textbf{DE-1} &
+  Ability to get data on bills in a machine-parsable format (even if
+  that is initially plaintext with custom code to parse it) \\
+  \bottomrule
+\end{tabu}
+
+\section{Scope and Limitations}
+\subsection{Scope of Initial Release}
+Initially, the application will only provide a way of viewing current
+bills in the San Luis Obispo City Council.
+
+\subsection{Scope of Subsequent Releases}
+Following a successful initial release, the next releases would be
+expected to add the ability to display current bills in the San Luis
+Obispo County Supervisors, followed by the California State
+Legislature and the US Congress. Push notifications would be added to
+notify people when a new bill comes up.
+
+Further expansion to cover more geographical locations would be possible.
+
+\subsection{Limitations and Exclusions}
+We do not plan to implement any functionality regarding candidates in
+elections in the first versions of the application. Such a feature
+might be possible in the long term, but not within the first few
+releases.
+
+
+\section{Business Context}
+\subsection{Stakeholder Profiles}
+\begin{adjustbox}{center,minipage=[c]{\paperwidth - 1in}}
+  \begin{tabu}{lX[L]X[L]X[L]X[L]}
+    \toprule
+    Stakeholder & Major Value & Attitudes & Major Interests & Constraints\\
+    \midrule
+    Local Voters&
+    Makes activity in local government easier&
+    Likely indifference, given apparent current attitude toward local government&
+    Ways in which policies and elections will impact their everyday lives&
+    Ease of use: information must be available quickly\\
+
+    Local activist groups&
+    Make bills affecting their causes more widely known&
+    Depending on the influence of the application, hopefully interest&
+    Passing and electing officials that represent their points of activism&
+    May or may not be direct users; competition\\
+
+    Local government officials&
+    Will receive more calls from voters if the application succeeds.&
+    Currently unknown.&
+    Properly and accurately serving their constituents&
+    Not direct users of the application\\
+    \bottomrule
+  \end{tabu}
+\end{adjustbox}
+
+\subsection{Project Priorities}
+TBD
+
+\subsection{Operating Environment}
+This project will be run as an iPhone mobile application aimed at
+users across the United States. Since our initial target audience is
+limited to a domestic one, the geographic distribution won’t be such
+that servers at many unique locations will be necessary. Our server(s)
+will be running a database with MySQL as the DBMS, and utilize PHP
+code on server-side to query the database and communicate with the
+iPhone app using requests and JSON data. Using Rest API calls to a
+backend database as the data management system is common practice in
+mobile application development.
+
+At this stage, we have not explored revenue streams for our business
+model besides advertising. At present, allowing user access for free
+somewhat reduces the risk incurred by a major service outage on our
+app since the degree of pressure involved when users pay for access to
+the application is significant. PolitiMap is not a tool we expect to
+be used more than once or twice a day by customers, and an outage of
+up to a full 24 hours should not be a major burden.
+
+Our MySQL server should be secured to prevent injection and
+manipulation of our data, but none of the data hosted on it is
+expected to be sensitive.
+
+\begin{appendix}
+\printbibliography
+\end{appendix}
+\end{document}

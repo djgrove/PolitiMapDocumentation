@@ -1,0 +1,91 @@
+\documentclass{article}
+\usepackage{varioref}
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+\usepackage{tabu}
+\usepackage{booktabs}
+\newcommand{\story}[3]{\item As a #1, I want to be able to #2 so I can #3.}
+\newcommand{\requirement}[1]{The system shall #1.}
+
+\title{User Stories, Use Cases\\
+  {\large and}\\
+  Functional Requirements}
+\author{Devon Grove}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\section{User Stories}
+\begin{enumerate}
+\story{San Luis Obispo community member}{view local political news through a centralized medium}
+	{remain objectively informed about local politics}\label{agenda}
+\story{Cal Poly student}{view policy positions of local politicians}
+	{become encouraged to participate in local politics and make informed decisions in local elections}
+\story{San Luis Obispo City Council Member}{contact my constituents in a more intimate way than email}
+	{increase transparency and my understanding of community needs and perspectives}
+\end{enumerate}
+\section{Use Cases}
+\begin{tabu}{rX}
+  \toprule
+  Use Case ID: & 5\\
+  Use Case Name: & Display Policy Positions\\
+  Created By: & Devon Grove\\
+  Last Updated By: & Devon Grove\\
+  Date Created: & 2016-10-07\\
+  Date Last Updated: & 2016-10-07\\
+  Actors: & The PolitiMap App\\
+  Description: & View policy summary of given local politician on active issues\\
+  Preconditions: &
+  \begin{enumerate}
+  \item The user's location is currently supported by the app
+  \item The user has chosen the city council member to evaluate
+  \item Push
+  \item The user has selected "Policy Positions" from menu options
+  \end{enumerate} \\
+  Postconditions: &
+  \begin{enumerate}
+  \item The app displays a summarized list of policy positions on active local legislation, and
+  	lists a "position not available" message if position is indeterminate
+  \end{enumerate} \\
+  Normal Flow: &
+  \begin{enumerate}
+  \item The user opens the app
+  \item The user specifies their location, or a cached location is processed
+  \item The user selects "Politicians" from the lower UI menu
+  \item The user selects their chosen politician from the "Your Representatives" list
+  \item The user navigates to "Policy Positions" using the UI menu
+  \end{enumerate} \\
+  Priority: & Medium\\
+  Special Requirements: & None\\
+  Assumptions: & Policy positions will be available publicly through government or council member's website\\
+  \bottomrule
+\end{tabu}
+\section{Functional Requirements}
+\begin{tabu}{lX}
+  \toprule
+  FR Requirement & Description\\
+  \midrule
+  FR-1 & \requirement{load data in the JSON format specified in
+    \vref{json-format}}\\
+  FR-2 & \requirement{fetch the data using AJAX or other method of web request}\\
+  FR-3 & \requirement{only load JSON data for the locations selected
+    by the user}\\
+  FR-4 & \requirement{data on politicians must be verifiable and completely accurate}\\
+  \bottomrule
+\end{tabu}
+\section{Non-Functional Requirements}
+\begin{tabu}{lX}
+  \toprule
+  NFR Requirement & Description\\
+  \midrule
+  NFR-1 & \requirement{provide menu UI on politician page for ease of navigation}\\
+  NFR-2 & \requirement{display bulleted list of policy positions on active legislation}\\
+  \bottomrule
+\end{tabu}
+
+\section{JSON Data Formatting}
+\label{json-format}
+This has yet to be determined. At this time, more consultation with the team is necessary to determine the exact data constraints and schema requirements for the project.
+Until it has been determined if major, generic policy points will be utilized or active local issues, schema cannot be defined. Whether "issue" data will be static or dynamic
+will affect the scope of this requirement.
+\end{document}
