@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{framed}
+\usepackage[hmargin=1.75in,bottom=.75in,top=.5in]{geometry}
+\usepackage{fontspec}
+\setmainfont{Roboto}
+\setlength{\heavyrulewidth}{2pt}
+\setlength{\lightrulewidth}{1pt}
+\setlength{\cmidrulewidth}{\lightrulewidth}
+\title{Cover Sheet for CPE 307}
+\author{PolitiMap Team}
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\begin{center}
+  \begin{tabular}{rl}
+    \textbf{Team Lead:}        & Devon Grove      \\
+    \textbf{Customer Contact:} & Jason Yoon       \\
+     \textbf{Team Members:}    & Matthew Goodrich \\
+                               & Michelle Gu      \\
+                               & Yash Mehra       \\
+                               & Andrew Gilbert
+  \end{tabular}
+
+  \vspace{.5in}
+
+  \includegraphics[trim=0 10 0 10,width=2in]{logo.png}
+
+  \vspace{.2in}
+
+  \section*{PolitiMap}
+  Breaks down political information into regions
+  based on your location. Can give up to date info on national,
+  regional and local politics to keep you and the community
+  informed.
+
+  \vspace{.6in}
+
+  \section*{Contact Info}
+  \renewcommand{\arraystretch}{1.25}
+  \begin{tabular}{rll}
+    \toprule
+    & \textbf{Name} & \textbf{Email} \\
+    \cmidrule{2-3}
+    Team Lead & Devon Grove & djgrove@calpoly.edu\\
+    Customer Contact & Jason Yoon & jyoon02@calpoly.edu\\
+    \bottomrule
+  \end{tabular}
+\end{center}
+\end{document}
