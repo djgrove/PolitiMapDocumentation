@@ -1,0 +1,100 @@
+\documentclass{article}
+\usepackage{varioref}
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+\usepackage{tabu}
+\usepackage{booktabs}
+\newcommand{\story}[3]{\item As a #1, I want to be able to #2 so I can #3.}
+\newcommand{\requirement}[1]{The system shall #1.}
+
+\title{User Stories, Use Cases\\
+  {\large and}\\
+  Functional Requirements}
+\author{Andrew Gilbert}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\section{User Stories}
+\begin{enumerate}
+\story{Cal Poly student}{find the agenda for the city council meeting
+  tonight}{make my voice heard}\label{agenda}
+\story{Cal Poly student}{watch the city council meeting tonight}{stay
+  current on what's happening in SLO when I'm at home}
+\story{City Council member}{notify people potentially affected by a
+  bill}{get public input on it}
+\end{enumerate}
+\section{Use Cases}
+\begin{tabu}{rX}
+  \toprule
+  Use Case ID: & 1\\
+  Use Case Name: & Display Agenda\\
+  Created By: & Andrew Gilbert\\
+  Last Updated By: & Andrew Gilbert\\
+  Date Created: & 2016-10-06\\
+  Date Last Updated: & 2016-10-06\\
+  Actors: & The PolitiMap App\\
+  Description: & Display the agenda for the next City Council meeting\\
+  Preconditions: &
+  \begin{enumerate}
+  \item The user has chosen a location which has a city council
+  \item The location is currently supported by the app
+  \item The app is open
+  \item The user has chosen ``City Council Meeting'' from the list of events.
+  \end{enumerate} \\
+  Postconditions: &
+  \begin{enumerate}
+  \item The app shows the agenda for the next City Council meeting for
+    the selected location.
+  \end{enumerate} \\
+  Normal Flow: &
+  \begin{enumerate}
+  \item The user opens app
+  \item The app requests data from server
+  \item (Alternative flow 1)
+  \item The app displays a list of upcoming events
+  \item The user chooses the City Council item
+  \end{enumerate} \\
+  Alternative Flows: &
+  Alternative flow 1
+  \begin{enumerate}
+  \item Read data from cache
+  \end{enumerate} \\
+  Priority: & High\\
+  Special Requirements: & \\
+  Assumptions: & Council meeting agendas will be available for all
+  supported locations\\
+  Notes and Issues: & Based on User Story \vref{agenda}\\
+  \bottomrule
+\end{tabu}
+\section{Functional Requirements}
+\begin{tabu}{lX}
+  \toprule
+  FR Requirement & Description\\
+  \midrule
+  FR-1 & \requirement{load data in the JSON format specified in
+    \vref{json-format}}\\
+  FR-2 & \requirement{fetch the data to load from the web}\\
+  FR-3 & \requirement{only load JSON data for the locations selected
+    by the user}\\
+  \bottomrule
+\end{tabu}
+\section{Non-Functional Requirements}
+\begin{tabu}{lX}
+  \toprule
+  NFR Requirement & Description\\
+  \midrule
+  NFR-1 & \requirement{provide a button to add an event to the user's
+    calendar}\\
+  NFR-2 & \requirement{display a list of upcoming meetings}\\
+  NFR-3 & \requirement{display the date and time of each meeting in
+    the list of meetings}\\
+  NFR-4 & \requirement{display the location of each meeting in the
+    list of meetings}\\
+  \bottomrule
+\end{tabu}
+
+\section{JSON Format}
+\label{json-format}
+TBD
+\end{document}
