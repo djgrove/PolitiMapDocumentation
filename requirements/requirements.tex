@@ -136,6 +136,8 @@ Use Case ID & \arabic{use_case}\\
   \hline
   Andrew Gilbert & October 15, 2016 & Spelling, grammar, and structure review. Final check for submission. & 4.0 \\
   \hline
+  Devon Grove & October 15, 2016 & Customer Segment improvements and additional proofreading. & 4.1 \\
+  \hline
 \end{tabu}
 
 \newpage
@@ -147,7 +149,7 @@ nonfunctional software requirements for an application that brings
 local, regional and national political information to a user's mobile
 device.  This document is intended to be used by the members of the
 project team who will implement and verify the correct functionality
-of the system. This document will also be seen by our professor,
+of the system. This document will also be viewed by our professor,
 Dr. Clark Turner.
 
 \subsection{Intended Audience and Reading Suggestions}
@@ -169,9 +171,15 @@ helpful to reference use cases.
 
 % I don't think we have any owners or customers besides ourselves
 % right now --AG
+% I am including some information about our targeted customer
+% archetype for now. This is supposed to be intended audience, not
+% active audience. --DG
 \subsubsection{Software Product Owners and Customers}
-Currently the developers are acting as customers, as they are members
-of the initial user class (i.e., young residents of San Luis Obispo).
+The user segment served by this project is the citizen and legislator population of
+the City of San Luis Obispo, California. Within this user segment
+exists two primary demographics: a user base between the ages of 35 and 50
+(middle-aged), and a user base between the ages of 18 and 22 (college students
+at California Polytechnic State University.
 % Customers will observe and confirm that the specified features and
 % requirements meet business needs and that all user needs are brought
 % to attention. Additionally, they will serve as the primary product
@@ -187,14 +195,14 @@ of the initial user class (i.e., young residents of San Luis Obispo).
 % \end{compactenum}
 
 \subsection{Project Scope}
-Initially, the application will only provide a way of viewing current
+Initially, the application's only function will be to view current
 bills in the San Luis Obispo City Council.
 
-Following a successful initial release, the next releases would be
+Following a successful initial release, following releases are
 expected to add the ability to display current bills in the San Luis
 Obispo County Supervisors, followed by the California State
-Legislature and the US Congress. Push notifications would be added to
-notify people when a new bill is introduced. Further expansion to
+Legislature and the US Congress. Push notifications will be added to
+notify users when a new bill is introduced. Further expansion to
 cover more geographical locations would be possible.
 
 \subsection{References}
@@ -206,8 +214,8 @@ cover more geographical locations would be possible.
 \section{Overall Description}
 \subsection{Product Perspective}
 The application will provide local, regional and national political
-information based on addresses provided by the user. The information
-will be displayed in a clean, readable and simple format.
+information based on the address provided by the user. The information
+will be displayed in an uncluttered, readable, and simple format.
 User-preferred locations will be able to be saved, edited, and deleted.
 
 \subsection{Product Features}
@@ -250,9 +258,9 @@ or twice a day per user.
 
 \subsection{Design and Implementation Constraints}
 \begin{enumerate}
-\item The initial version of the mobile application will be written in
-  Swift and thus only available to users with a iPhone.
-\item The initial version of the backend will be static JSON files
+\item The initial version of the mobile application will be ported to
+the iPhone App Store only, as it will be written in Swift.
+\item The initial backend data will exist as static JSON files
   served from a web server.
 \end{enumerate}
 
@@ -262,9 +270,10 @@ TBD
 \subsection{Assumptions and Dependencies}
 \subsubsection{Assumptions}
 \begin{enumerate}
-\item Voter involvement with local politics is limited.
-\item More involvement with local politics is beneficial.
+\item Voter involvement with local politics is poor.
+\item Increased involvement with local politics is beneficial.
 \item Voters lack information in order to be more involved with local politics.
+\item The rationale for poor voter turnout is local political ignorance.
 \end{enumerate}
 
 \subsubsection{Dependencies}
