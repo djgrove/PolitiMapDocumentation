@@ -60,7 +60,7 @@ Use Case ID & \arabic{use_case}\\
 \usepackage{ifthen}
 \newcommand{\functionalrequirementprinter}{\stepcounter{tableline}
 \ifthenelse{\value{tableline}>1}{\refstepcounter{functional_requirement}
-  FR-\arabic{functional_requirement}}{Requirement ID}&
+  FR-\arabic{functional_requirement}}{Requirement ID}
 }
 \newenvironment{func_req}{
 \setcounter{tableline}{0}
