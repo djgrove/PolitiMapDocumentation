@@ -1,0 +1,35 @@
+\subsection{Server}
+Our data is served from Amazon S3. See \vref{data-format} for the shape of the
+data.
+
+\subsection{App}
+External dependencies: 
+    Swifty JSON (JSON handling library)
+    Alamofire (Swift REST client library)
+Architecture:
+    Request triggered by dropdown;
+    Alamofire sends request to URL;
+    SwiftyJSON converts to JSON objects that can be read with Swift;
+    Logic of application
+
+Pages:
+    \vref{requirements-flowchart}
+
+\subsection{Data}
+\label{data-format}
+Scopes: Fed, State, Local
+Arrangement: 
+    List of meetings with dates and times, 
+    Separate list of bills per meeting
+
+%     \begin{minted}
+% [
+%    {
+%       "date": "2016-10-4",
+%       "location": "1000 Spring Street, Paso Robles",
+%       "time": "18-30",
+%       "type": "council",
+%       "public": true
+%    }
+%  ]
+%     \end{minted}
