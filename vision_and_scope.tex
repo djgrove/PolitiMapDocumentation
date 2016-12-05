@@ -1,0 +1,101 @@
+% \include{vision_and_scope}
+% do we need revision history here?
+% \section{Revision History}
+
+\subsection{Background}
+Voter turnout is a problem for the United States as a whole, with a
+study from Pew Research stating that the US ranks “31st among the 35
+countries in the Organization for Economic Cooperation and
+Development, most of whose members are highly developed, democratic
+states.”  \cite{pew} Voter turnout for local elections in large cities
+is even worse, with a 2014 study from Governing showing that turnout
+in Chicago, New York, Philadelphia, and LA ranged from 20\% to 42\% in
+the most recent election shown in the study. \cite{governing} Turnout
+in San Luis Obispo county for the most recent general election in 2014
+was 58.42\% of registered voters. \cite{slocounty}
+
+Since 62,434 registered voters in San Luis Obispo County alone did not vote in the most recent
+general election, there is a unique opportunity to significantly increase
+voter turnout in the region. Further, it is unlikely these same prospective voters are following local legislation that has been proposed. PolitiMap aims to increase the local political participation by simplifying the political process
+
+\subsubsection{Business Risks}
+\begin{tabu}{lXX}
+  \toprule
+  Risk Level & Description & Mitigation \\
+  \midrule
+  Occurred &
+  \textbf{RI-1} Competitor exists &
+  Gain clear
+  understanding of competitor's positioning and either provide a
+  better product or a different product\\
+
+  High &
+  \textbf{RI-2} Server hosting may become expensive after our
+  free year on AWS &
+  Make plans to shut down system after one year or to
+  have long-term funding \\
+  \bottomrule
+\end{tabu}
+
+\subsection{Assumptions and Dependencies}
+\begin{tabu}{lX}
+  \toprule
+  Assumption    & Description \\
+  \midrule
+  \textbf{AS-1} & More involvement with local politics is beneficial \\
+
+  \textbf{AS-2} & Voters lack information in order to be more involved
+  with local politics \\
+  \bottomrule
+\end{tabu}
+\vspace{.3in}
+\noindent\begin{tabu}{lX}
+  \toprule
+  Dependency    & Description \\
+  \midrule
+  \textbf{DE-1} &
+  Ability to get data on bills in a machine-parsable format (even if
+  that is initially plaintext with custom code to parse it) \\
+  \bottomrule
+\end{tabu}
+
+\subsection{Scope}
+Initially, the application will only provide a way of viewing current
+bills in the San Luis Obispo City Council. Following a successful initial release, the next releases would be expected to add the ability to display current bills in the San Luis
+Obispo County Supervisors, followed by the California State
+Legislature and the US Congress. Push notifications would be added to
+notify people when a new bill comes up. Further expansion to cover more geographical locations would be possible.
+
+\subsection{Limitations and Exclusions}
+We have not yet implemented any functionality regarding candidates in
+elections in the first versions of the application. Such a feature
+might be possible in the long term, but not within the first few
+releases.
+
+\subsection{Business Context}
+\subsubsection{Stakeholder Profiles}
+\begin{adjustbox}{center,minipage=[c]{\paperwidth - 1in}}
+  \begin{tabu}{lX[L]X[L]X[L]X[L]}
+    \toprule
+    Stakeholder & Major Value & Attitudes & Major Interests & Constraints\\
+    \midrule
+    Local Voters&
+    Makes activity in local government easier&
+    Likely indifference, given apparent current attitude toward local government&
+    Ways in which policies and elections will impact their everyday lives&
+    Ease of use: information must be available quickly\\
+
+    Local activist groups&
+    Make bills affecting their causes more widely known&
+    Depending on the influence of the application, hopefully interest&
+    Passing and electing officials that represent their points of activism&
+    May or may not be direct users; competition\\
+
+    Local government officials&
+    Will receive more calls from voters if the application succeeds.&
+    Currently unknown.&
+    Properly and accurately serving their constituents&
+    Not direct users of the application\\
+    \bottomrule
+  \end{tabu}
+\end{adjustbox}
