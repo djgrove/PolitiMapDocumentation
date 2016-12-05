@@ -1,6 +1,7 @@
 \documentclass[12pt,oneside,letterpaper]{article}
 \usepackage{float}
 \usepackage{graphicx}
+\usepackage{wrapfig}
 \usepackage{varioref}
 \usepackage[hidelinks]{hyperref}
 \usepackage{cleveref}
@@ -86,6 +87,7 @@ Use Case ID & \arabic{use_case}\\
 \tableofcontents
 
 \section{Vision and Scope}
+<<<<<<< HEAD
 \include{vision_and_scope}
 
 \section{Requirements}
@@ -93,4 +95,13 @@ Use Case ID & \arabic{use_case}\\
 
 \section{Architecture}
 \include{architecture}
+=======
+\input{vision_and_scope}
+
+\section{Requirements}
+\input{requirements}
+
+\section{Architecture}
+\input{architecture}
+>>>>>>> a337ff45595607051d7b88c7a1e77996bf605f43
 \end{document}
