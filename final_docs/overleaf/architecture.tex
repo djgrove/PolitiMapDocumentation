@@ -1,0 +1,23 @@
+\section{Architecture}
+% \include{architecture}
+\subsection{Overview}
+\subsubsection{Frameworks, Tools, and Libraries Utilized}
+PolitiMap is run as an iPhone Mobile Application written in Swift. Due
+to our initial constraints, hosting servers were not necessary. JSON data
+is hosted using an Amazon S3 filespace bucket. To make RESTful API calls
+from the app, PolitiMap uses the Alamofire Swift library. JSON processing
+is simplified using the SwiftyJSON to handle implicit data types inherent
+with JSON data.
+\subsubsection{Data Flow}
+% would be good if Andrew discussed some of the work that went into parsing
+% data here, if it can be done concisely
+% also a good idea to have a diagram here
+Application data is split between an Amazon S3 service and local storage.
+Information pertinent to political data is housed on Amazon, while user
+preferences are cached locally on the device. This eliminates the need for
+a full server running a Database Management System (such as MySQL). Remote
+data is stored in manually-created JSON files. When a user attempts to view
+information about a region within PolitiMap, the app uses Alamofire
+to make a request to the JSON files on the web and returns them. The source
+code handles the implicit JSON data using native SwiftyJSON functions to
+identify data types. Once it is typed, the data is loaded into the 
