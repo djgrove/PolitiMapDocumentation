@@ -1,0 +1,288 @@
+\documentclass[12pt,oneside,letterpaper]{article}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{varioref}
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+
+\usepackage{calc}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+
+\usepackage{biblatex}
+\addbibresource{vs.bib}
+
+% % Typeset URLs cleanly
+% \usepackage{url}
+
+% More powerful tables, incl. multi-page tables
+\usepackage{longtable}
+\usepackage{tabu}
+% Ensure tabu tables can breathe
+\global\tabulinesep=5pt
+
+% Customization for enumerations
+\usepackage{enumitem}
+
+% Provide better unjustified text
+\usepackage{ragged2e}
+
+% Define single-spaced list
+\newlist{compactenum}{enumerate}{2}
+\setlist[compactenum]{label=\arabic*.,nosep}
+
+% Define environment for single-spaced lists in tables
+\newenvironment{packed_enumerate}{
+  \begin{minipage}[t]{\linewidth}\begin{compactenum}[after=\strut]}
+    {\end{compactenum}\end{minipage}}
+
+% Expand the text area
+\usepackage[textwidth=6.25in]{geometry}
+
+\usepackage{titlesec}
+\titleformat*{\paragraph}{\itshape}
+
+% Set style on main pages
+\pagestyle{headings}
+
+% Set up counters for other things
+\newcounter{use_case}
+\crefname{use_case}{UC}{UCs}
+
+\newenvironment{use_case}[1]{
+\begin{longtabu}{|r|X|}
+\hline
+\refstepcounter{use_case}\label{#1}
+Use Case ID & \arabic{use_case}\\
+}{
+\hline
+\end{longtabu}
+}
+
+% Set up automatic numbering of functional requirements
+\newcounter{functional_requirement}
+\newcounter{tableline}
+% Allow conditional statements
+\usepackage{ifthen}
+\newcommand{\functionalrequirementprinter}{\stepcounter{tableline}
+\ifthenelse{\value{tableline}>1}{\refstepcounter{functional_requirement}
+  FR-\arabic{functional_requirement}}{Requirement ID}
+}
+\newenvironment{func_req}{
+\setcounter{tableline}{0}
+\begin{longtabu}{|@{\makebox[8em][r]{\functionalrequirementprinter}}|X|}
+  \hline
+  Description \\
+}{
+\end{longtabu}
+}
+
+\title{Summary Document\\\large for\\\Large PolitiMap}
+\author{PolitiMap Team}
+
+\begin{document}
+\thispagestyle{empty}\maketitle
+\tableofcontents
+
+\newpage
+\section{Vision and Scope}
+% \include{vision_and_scope}
+
+\subsection{Background}
+Voter turnout is a problem for the United States as a whole, with a
+study from Pew Research stating that the US ranks “31st among the 35
+countries in the Organization for Economic Cooperation and
+Development, most of whose members are highly developed, democratic
+states.”  \cite{pew} Voter turnout for local elections in large cities
+is even worse, with a 2014 study from Governing showing that turnout
+in Chicago, New York, Philadelphia, and LA ranged from 20\% to 42\% in
+the most recent election shown in the study. \cite{governing} Turnout
+in San Luis Obispo county for the most recent general election in 2014
+was 58.42\% of registered voters. \cite{slocounty}
+
+Since 62,434 registered voters in San Luis Obispo County alone did not vote in the most recent
+general election, there is a unique opportunity to significantly increase
+voter turnout in the region. Further, it is unlikely these same prospective voters are following local legislation that has been proposed. PolitiMap aims to increase the local political participation by simplifying the political process
+
+\subsubsection{Business Risks}
+\begin{tabu}{lXX}
+  \toprule
+  Risk Level & Description & Mitigation \\
+  \midrule
+  Occurred &
+  \textbf{RI-1} Competitor exists &
+  Gain clear
+  understanding of competitor's positioning and either provide a
+  better product or a different product\\
+
+  High &
+  \textbf{RI-2} Server hosting may become expensive after our
+  free year on AWS &
+  Make plans to shut down system after one year or to
+  have long-term funding \\
+  \bottomrule
+\end{tabu}
+
+\subsection{Assumptions and Dependencies}
+\begin{tabu}{lX}
+  \toprule
+  Assumption    & Description \\
+  \midrule
+  \textbf{AS-1} & More involvement with local politics is beneficial \\
+
+  \textbf{AS-2} & Voters lack information in order to be more involved
+  with local politics \\
+  \bottomrule
+\end{tabu}
+\vspace{.3in}
+\noindent\begin{tabu}{lX}
+  \toprule
+  Dependency    & Description \\
+  \midrule
+  \textbf{DE-1} &
+  Ability to get data on bills in a machine-parsable format (even if
+  that is initially plaintext with custom code to parse it) \\
+  \bottomrule
+\end{tabu}
+
+\subsection{Scope}
+Initially, the application will only provide a way of viewing current
+bills in the San Luis Obispo City Council. Following a successful initial release, the next releases would be expected to add the ability to display current bills in the San Luis
+Obispo County Supervisors, followed by the California State
+Legislature and the US Congress. Push notifications would be added to
+notify people when a new bill comes up. Further expansion to cover more geographical locations would be possible.
+
+\subsection{Limitations and Exclusions}
+We have not yet implemented any functionality regarding candidates in
+elections in the first versions of the application. Such a feature
+might be possible in the long term, but not within the first few
+releases.
+
+\subsection{Business Context}
+\subsubsection{Stakeholder Profiles}
+\begin{adjustbox}{center,minipage=[c]{\paperwidth - 1in}}
+  \begin{tabu}{lX[L]X[L]X[L]X[L]}
+    \toprule
+    Stakeholder & Major Value & Attitudes & Major Interests & Constraints\\
+    \midrule
+    Local Voters&
+    Makes activity in local government easier&
+    Likely indifference, given apparent current attitude toward local government&
+    Ways in which policies and elections will impact their everyday lives&
+    Ease of use: information must be available quickly\\
+
+    Local activist groups&
+    Make bills affecting their causes more widely known&
+    Depending on the influence of the application, hopefully interest&
+    Passing and electing officials that represent their points of activism&
+    May or may not be direct users; competition\\
+
+    Local government officials&
+    Will receive more calls from voters if the application succeeds.&
+    Currently unknown.&
+    Properly and accurately serving their constituents&
+    Not direct users of the application\\
+    \bottomrule
+  \end{tabu}
+\end{adjustbox}
+
+\section{Requirements}
+% \subsubsection{Purpose}
+% This Software Requirements Specification describes the functional and
+% nonfunctional software requirements for an application that brings
+% local, regional and national political information to a user's mobile
+% device.  This document is intended to be used by the members of the
+% project team who will implement and verify the correct functionality
+% of the system. This document will also be viewed by our professor,
+% Dr. Clark Turner.
+
+% I don't think we have any owners or customers besides ourselves
+% right now --AG
+% I am including some information about our targeted customer
+% archetype for now. This is supposed to be intended audience, not
+% active audience. --DG
+\subsection{User Segment}
+The user segment served by this project is the citizen and legislator population of
+the City of San Luis Obispo, California. Within this user segment
+exists two primary demographics: a user base between the ages of 35 and 50
+(middle-aged), and a user base between the ages of 18 and 22 (college students
+at California Polytechnic State University.
+\subsection{Use Cases}
+% Customers will observe and confirm that the specified features and
+% requirements meet business needs and that all user needs are brought
+% to attention. Additionally, they will serve as the primary product
+% owner as they will prioritize features during implementation.
+
+% \paragraph{Suggested Reading Sequence:}
+% \begin{compactenum}
+% \item Overall Description
+% \item System Features
+% \item Use Cases
+% \item External Interface Requirements
+% \item Other Nonfunctional Requirements
+% \end{compactenum}
+
+% \subsection{Project Scope}
+% Initially, the application's only function will be to view current
+% bills in the San Luis Obispo City Council.
+% 
+% Following a successful initial release, following releases are
+% expected to add the ability to display current bills in the San Luis
+% Obispo County Supervisors, followed by the California State
+% Legislature and the US Congress. Push notifications will be added to
+% notify users when a new bill is introduced. Further expansion to
+% cover more geographical locations would be possible.
+
+% \subsection{Overall Description}
+% \subsubsection{Product Perspective}
+% The application will provide local, regional and national political
+% information based on the address provided by the user. The information
+% will be displayed in an uncluttered, readable, and simple format.
+% User-preferred locations will be able to be saved, edited, and deleted.
+% 
+% At this stage, we have not explored revenue streams for our business
+% model besides advertising. At present, allowing user access for free
+% reduces our obligation to users, avoiding some of the potential
+% consequences of a major service outage. We do not anticipate server
+% load to be unbearable, as we expect PolitiMap to be accessed only once
+% or twice a day per user.
+
+\subsection{Design and Implementation Constraints}
+\begin{enumerate}
+\item The initial version of the mobile application will be ported to
+the iPhone App Store only, as it will be written in Swift.
+\item The initial backend data will exist as static JSON files
+  served from a web server.
+\end{enumerate}
+
+% \include{requirements}
+
+\section{Architecture}
+% \include{architecture}
+\subsection{Overview}
+\subsubsection{Frameworks, Tools, and Libraries Utilized}
+PolitiMap is run as an iPhone Mobile Application written in Swift. Due
+to our initial constraints, hosting servers were not necessary. JSON data
+is hosted using an Amazon S3 filespace bucket. To make RESTful API calls
+from the app, PolitiMap uses the Alamofire Swift library. JSON processing
+is simplified using the SwiftyJSON to handle implicit data types inherent
+with JSON data.
+\subsubsection{Data Flow}
+% would be good if Andrew discussed some of the work that went into parsing
+% data here, if it can be done concisely
+% also a good idea to have a diagram here
+Application data is split between an Amazon S3 service and local storage.
+Information pertinent to political data is housed on Amazon, while user
+preferences are cached locally on the device. This eliminates the need for
+a full server running a Database Management System (such as MySQL). Remote
+data is stored in manually-created JSON files. When a user attempts to view
+information about a region within PolitiMap, the app uses Alamofire
+to make a request to the JSON files on the web and returns them. The source
+code handles the implicit JSON data using native SwiftyJSON functions to
+identify data types. Once it is typed, the data is loaded into the 
+
+\end{document}
+
+\begin{appendix}
+\printbibliography
+\end{appendix}
